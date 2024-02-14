@@ -19,6 +19,12 @@ export default defineConfig({
         "styled-components",
         "react-icons/md",
         "@inubekit/foundations",
+        "@inubekit/button",
+        "@inubekit/grid",
+        "@inubekit/hooks",
+        "@inubekit/icon",
+        "@inubekit/stack",
+        "@inubekit/text",
       ],
       output: {
         globals: {
