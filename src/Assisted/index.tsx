@@ -31,7 +31,7 @@ type ITitleButton = {
   finish?: string;
 };
 
-export interface IAssistedProps {
+interface IAssisted {
   steps: IStep[];
   currentStepId: IStep["id"];
   handlePrev: (id: IStep["id"]) => void;
@@ -51,7 +51,7 @@ const ProgressBar = (props: IProgressBarProps) => {
   );
 };
 
-export const Assisted = (props: IAssistedProps) => {
+const Assisted = (props: IAssisted) => {
   const {
     steps,
     currentStepId,
@@ -63,6 +63,30 @@ export const Assisted = (props: IAssistedProps) => {
       finish: "Send",
     },
   } = props;
+
+  const interceptHandlePrev = (id: IStep["id"]) => {
+    try {
+      handlePrev && handlePrev(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
+  };
+
+  const interceptHandleNext = (id: IStep["id"]) => {
+    try {
+      handleNext && handleNext(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
+  };
 
   const measure = useMediaQuery("(min-width: 600px)");
 
@@ -80,7 +104,7 @@ export const Assisted = (props: IAssistedProps) => {
             spacing="wide"
             variant="none"
             iconBefore={<MdArrowBack />}
-            onClick={() => handlePrev(currentStep!.id)}
+            onClick={() => interceptHandlePrev(currentStep!.id)}
             appearance="primary"
             disabled={currentStepIndex === 0}
           >
@@ -96,7 +120,7 @@ export const Assisted = (props: IAssistedProps) => {
               appearance="primary"
               icon={<MdArrowBack style={{ padding: "2px 0px" }} />}
               size="20px"
-              onClick={() => handlePrev(currentStep!.id)}
+              onClick={() => interceptHandlePrev(currentStep!.id)}
               disabled={currentStepIndex === 0}
             />
           )}
@@ -122,7 +146,7 @@ export const Assisted = (props: IAssistedProps) => {
               appearance="primary"
               icon={<MdArrowForward style={{ padding: "0px 2px" }} />}
               size="20px"
-              onClick={() => handleNext(currentStep!.id)}
+              onClick={() => interceptHandleNext(currentStep!.id)}
             />
           )}
         </Grid>
@@ -152,7 +176,7 @@ export const Assisted = (props: IAssistedProps) => {
             spacing="wide"
             variant="none"
             iconAfter={<MdArrowForward />}
-            onClick={() => handleNext(currentStep!.id)}
+            onClick={() => interceptHandleNext(currentStep!.id)}
           >
             {currentStep?.id === steps.length ? finish : after}
           </Button>
@@ -161,3 +185,6 @@ export const Assisted = (props: IAssistedProps) => {
     </Grid>
   );
 };
+
+export { Assisted };
+export type { IAssisted };

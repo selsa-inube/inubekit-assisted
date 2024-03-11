@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
-export const StyledProgressBar = styled.div`
+const StyledProgressBar = styled.div`
   border-radius: 10px;
   transition: width 0.5s;
   height: 16px;
@@ -10,7 +10,7 @@ export const StyledProgressBar = styled.div`
     theme?.color?.surface?.dark?.clear || inube.color.surface.dark.clear};
 `;
 
-export const StyledProgressIndicator = styled.div`
+const StyledProgressIndicator = styled.div`
   border-radius: 8px;
   transition: width 0.5s;
   height: 16px;
@@ -21,7 +21,7 @@ export const StyledProgressIndicator = styled.div`
     inube.color.surface.primary?.regular};
 `;
 
-export const StyledStepIndicator = styled.div`
+const StyledStepIndicator = styled.div`
   display: flex;
   justify-content: center;
   width: 20px;
@@ -35,3 +35,5 @@ export const StyledStepIndicator = styled.div`
     theme?.color?.stroke?.primary?.regular ||
     inube.color.stroke.primary?.regular};
 `;
+
+export { StyledProgressBar, StyledProgressIndicator, StyledStepIndicator };

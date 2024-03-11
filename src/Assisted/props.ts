@@ -1,4 +1,4 @@
-export const parameters = {
+const parameters = {
   docs: {
     descriptions: {
       component:
@@ -7,7 +7,7 @@ export const parameters = {
   },
 };
 
-export const props = {
+const props = {
   steps: {
     description:
       "(Array of objects): An array to represent each step of the journey. Each object in the array represents one step and must have the following structure: id, label, description (Optional). The order of the steps depends on the order in the array,",
@@ -35,3 +35,5 @@ export const props = {
       "(string): (Optional) A string to be displayed in the button after the label of the current step.",
   },
 };
+
+export { parameters, props };
