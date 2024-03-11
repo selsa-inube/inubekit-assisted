@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Assisted, IAssistedProps } from "..";
+import { Assisted, IAssisted } from "..";
 
-export const AssistedController = (props: IAssistedProps) => {
+const AssistedController = (props: IAssisted) => {
   const { steps, currentStepId } = props;
 
   const [currentStep, setCurrentStep] = useState(currentStepId);
@@ -26,3 +26,5 @@ export const AssistedController = (props: IAssistedProps) => {
     />
   );
 };
+
+export { AssistedController };

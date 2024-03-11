@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { presente } from "@inubekit/foundations";
 import { parameters, props } from "../props";
 import { AssistedController } from "./Assisted.Controller";
-import { Assisted, IAssistedProps } from "..";
+import { Assisted, IAssisted } from "..";
 
 const story = {
   title: "Feedback/Assisted",
@@ -49,9 +49,7 @@ const stepsMock = [
   },
 ];
 
-export const Default = (args: IAssistedProps) => (
-  <AssistedController {...args} />
-);
+const Default = (args: IAssisted) => <AssistedController {...args} />;
 
 Default.args = {
   steps: stepsMock,
@@ -67,7 +65,7 @@ const theme = {
   ...presente,
 };
 
-export const Themed = (args: IAssistedProps) => (
+const Themed = (args: IAssisted) => (
   <ThemeProvider theme={theme}>
     <AssistedController {...args} />
   </ThemeProvider>
@@ -77,4 +75,5 @@ Themed.args = {
   ...Default.args,
 };
 
+export { Default, Themed };
 export default story;
