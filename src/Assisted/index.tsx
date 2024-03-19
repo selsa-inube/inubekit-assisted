@@ -6,36 +6,20 @@ import { Icon } from "@inubekit/icon";
 import { inube } from "@inubekit/foundations";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
-import { useMediaQuery } from "@inubekit/hooks";
 
 import {
   StyledProgressBar,
   StyledProgressIndicator,
   StyledStepIndicator,
 } from "./styles";
-
-type IStep = {
-  id: number;
-  label: string;
-  description?: string;
-};
-
-interface IProgressBarProps {
-  currentStep: IStep["id"];
-  arrayLength: number;
-}
-
-type ITitleButton = {
-  before?: string;
-  after?: string;
-  finish?: string;
-};
+import { IProgressBarProps, ISize, IStep, ITitleButton } from "./props";
 
 interface IAssisted {
-  steps: IStep[];
   currentStepId: IStep["id"];
   handlePrev: (id: IStep["id"]) => void;
   handleNext: (id: IStep["id"]) => void;
+  steps: IStep[];
+  size?: ISize;
   titleButtonText?: ITitleButton;
 }
 
@@ -54,6 +38,7 @@ const ProgressBar = (props: IProgressBarProps) => {
 const Assisted = (props: IAssisted) => {
   const {
     steps,
+    size = "large",
     currentStepId,
     handlePrev,
     handleNext,
@@ -88,8 +73,6 @@ const Assisted = (props: IAssisted) => {
     }
   };
 
-  const measure = useMediaQuery("(min-width: 600px)");
-
   const currentStep = steps.find((step) => step?.id === currentStepId);
 
   const currentStepIndex = steps.findIndex(
@@ -97,8 +80,11 @@ const Assisted = (props: IAssisted) => {
   );
 
   return (
-    <Grid templateColumns={!measure ? "1fr" : "auto 1fr auto"}>
-      {measure && (
+    <Grid
+      templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}
+      width={size === "small" ? "312px" : "100%"}
+    >
+      {size === "large" && (
         <Stack alignItems="center">
           <Button
             spacing="wide"
@@ -115,7 +101,7 @@ const Assisted = (props: IAssisted) => {
 
       <Stack direction="column" margin="s0 s0 s075 s0">
         <Grid templateColumns="auto auto 1fr auto" gap="s100">
-          {!measure && (
+          {size === "small" && (
             <Icon
               appearance="primary"
               icon={<MdArrowBack style={{ padding: "2px 0px" }} />}
@@ -138,10 +124,14 @@ const Assisted = (props: IAssisted) => {
               />
             )}
           </StyledStepIndicator>
-          <Text type="title" size={measure ? "medium" : "small"} ellipsis>
+          <Text
+            type="title"
+            size={size === "large" ? "medium" : "small"}
+            ellipsis
+          >
             {currentStep?.label}
           </Text>
-          {!measure && (
+          {size === "small" && (
             <Icon
               appearance="primary"
               icon={<MdArrowForward style={{ padding: "0px 2px" }} />}
@@ -155,7 +145,7 @@ const Assisted = (props: IAssisted) => {
             currentStep={currentStepIndex + 1}
             arrayLength={steps.length}
           />
-          {measure && (
+          {size === "large" && (
             <Text type="label">
               {currentStepIndex + 1}/{steps.length}
             </Text>
@@ -170,7 +160,7 @@ const Assisted = (props: IAssisted) => {
           {currentStep?.description}
         </Text>
       </Stack>
-      {measure && (
+      {size === "large" && (
         <Stack alignItems="center">
           <Button
             spacing="wide"
