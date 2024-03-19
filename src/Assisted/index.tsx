@@ -82,7 +82,7 @@ const Assisted = (props: IAssisted) => {
   return (
     <Grid
       templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}
-      width={size === "small" ? "312px" : "100%"}
+      width={size === "small" ? "312px" : "auto"}
     >
       {size === "large" && (
         <Stack alignItems="center">
