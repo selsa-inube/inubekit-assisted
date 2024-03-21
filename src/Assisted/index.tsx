@@ -14,32 +14,32 @@ import {
   StyledStepIndicator,
 } from "./styles";
 
-type IStep = {
+type IAssistedIStep = {
   id: number;
   label: string;
   description?: string;
 };
 
-interface IProgressBarProps {
-  currentStep: IStep["id"];
+interface IAssistedIProgressBarProps {
+  currentStep: IAssistedIStep["id"];
   arrayLength: number;
 }
 
-type ITitleButton = {
+type IAssistedITitleButton = {
   before?: string;
   after?: string;
   finish?: string;
 };
 
 interface IAssisted {
-  steps: IStep[];
-  currentStepId: IStep["id"];
-  handlePrev: (id: IStep["id"]) => void;
-  handleNext: (id: IStep["id"]) => void;
-  titleButtonText?: ITitleButton;
+  steps: IAssistedIStep[];
+  currentStepId: IAssistedIStep["id"];
+  handlePrev: (id: IAssistedIStep["id"]) => void;
+  handleNext: (id: IAssistedIStep["id"]) => void;
+  titleButtonText?: IAssistedITitleButton;
 }
 
-const ProgressBar = (props: IProgressBarProps) => {
+const ProgressBar = (props: IAssistedIProgressBarProps) => {
   const { currentStep, arrayLength } = props;
   return (
     <StyledProgressBar>
@@ -64,7 +64,7 @@ const Assisted = (props: IAssisted) => {
     },
   } = props;
 
-  const interceptHandlePrev = (id: IStep["id"]) => {
+  const interceptHandlePrev = (id: IAssistedIStep["id"]) => {
     try {
       handlePrev && handlePrev(id);
     } catch (error) {
@@ -76,7 +76,7 @@ const Assisted = (props: IAssisted) => {
     }
   };
 
-  const interceptHandleNext = (id: IStep["id"]) => {
+  const interceptHandleNext = (id: IAssistedIStep["id"]) => {
     try {
       handleNext && handleNext(id);
     } catch (error) {
@@ -93,7 +93,7 @@ const Assisted = (props: IAssisted) => {
   const currentStep = steps.find((step) => step?.id === currentStepId);
 
   const currentStepIndex = steps.findIndex(
-    (step) => step?.id === currentStepId,
+    (step) => step?.id === currentStepId
   );
 
   return (
@@ -187,4 +187,9 @@ const Assisted = (props: IAssisted) => {
 };
 
 export { Assisted };
-export type { IAssisted };
+export type {
+  IAssisted,
+  IAssistedIStep,
+  IAssistedITitleButton,
+  IAssistedIProgressBarProps,
+};
