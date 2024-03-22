@@ -3,7 +3,6 @@ import { MdArrowBack, MdArrowForward, MdCheckCircle } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Grid } from "@inubekit/grid";
 import { Icon } from "@inubekit/icon";
-import { inube } from "@inubekit/foundations";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { useMediaQuery } from "@inubekit/hooks";
@@ -93,7 +92,7 @@ const Assisted = (props: IAssisted) => {
   const currentStep = steps.find((step) => step?.id === currentStepId);
 
   const currentStepIndex = steps.findIndex(
-    (step) => step?.id === currentStepId,
+    (step) => step?.id === currentStepId
   );
 
   return (
@@ -150,7 +149,7 @@ const Assisted = (props: IAssisted) => {
             />
           )}
         </Grid>
-        <Stack alignItems="center" gap={inube.spacing.s100}>
+        <Stack alignItems="center" gap="8px">
           <ProgressBar
             currentStep={currentStepIndex + 1}
             arrayLength={steps.length}
