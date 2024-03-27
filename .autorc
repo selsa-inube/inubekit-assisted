@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "git-tag",
+    [
+      "npm",
+      {
+        "setRcToken": true,
+        "publishFlags": ["--access", "public"]
+      }
+    ]
+  ],
+  "owner": "cmarin001",
+  "repo": "inubekit-test",
+  "name": "cmarin001",
+  "email": "cmarin6051@gmail.com"
+}
