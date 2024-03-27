@@ -3,7 +3,6 @@ import { MdArrowBack, MdArrowForward, MdCheckCircle } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Grid } from "@inubekit/grid";
 import { Icon } from "@inubekit/icon";
-import { inube } from "@inubekit/foundations";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 
@@ -11,6 +10,7 @@ import {
   StyledProgressBar,
   StyledProgressIndicator,
   StyledStepIndicator,
+  StyledGridContainer,
 } from "./styles";
 import { IProgressBarProps, ISize, IStep, ITitleButton } from "./props";
 
@@ -80,99 +80,98 @@ const Assisted = (props: IAssisted) => {
   );
 
   return (
-    <Grid
-      templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}
-      width={size === "small" ? "312px" : "auto"}
-    >
-      {size === "large" && (
-        <Stack alignItems="center">
-          <Button
-            spacing="wide"
-            variant="none"
-            iconBefore={<MdArrowBack />}
-            onClick={() => interceptHandlePrev(currentStep!.id)}
-            appearance="primary"
-            disabled={currentStepIndex === 0}
-          >
-            {before}
-          </Button>
-        </Stack>
-      )}
-
-      <Stack direction="column" margin="s0 s0 s075 s0">
-        <Grid templateColumns="auto auto 1fr auto" gap="s100">
-          {size === "small" && (
-            <Icon
-              appearance="primary"
-              icon={<MdArrowBack style={{ padding: "2px 0px" }} />}
-              size="20px"
+    <StyledGridContainer size={size}>
+      <Grid templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}>
+        {size === "large" && (
+          <Stack alignItems="center">
+            <Button
+              spacing="wide"
+              variant="none"
+              iconBefore={<MdArrowBack />}
               onClick={() => interceptHandlePrev(currentStep!.id)}
+              appearance="primary"
               disabled={currentStepIndex === 0}
-            />
-          )}
-          <StyledStepIndicator>
-            {currentStepId !== steps.length ? (
-              <Text type="label" size="medium" appearance="primary">
-                {currentStepId}
-              </Text>
-            ) : (
+            >
+              {before}
+            </Button>
+          </Stack>
+        )}
+
+        <Stack direction="column" margin="s0 s0 s075 s0">
+          <Grid templateColumns="auto auto 1fr auto" gap="s100">
+            {size === "small" && (
               <Icon
                 appearance="primary"
-                icon={<MdCheckCircle />}
+                icon={<MdArrowBack style={{ padding: "2px 0px" }} />}
                 size="20px"
-                spacing="compact"
+                onClick={() => interceptHandlePrev(currentStep!.id)}
+                disabled={currentStepIndex === 0}
               />
             )}
-          </StyledStepIndicator>
-          <Text
-            type="title"
-            size={size === "large" ? "medium" : "small"}
-            ellipsis
-          >
-            {currentStep?.label}
-          </Text>
-          {size === "small" && (
-            <Icon
-              appearance="primary"
-              icon={<MdArrowForward style={{ padding: "0px 2px" }} />}
-              size="20px"
-              onClick={() => interceptHandleNext(currentStep!.id)}
-            />
-          )}
-        </Grid>
-        <Stack alignItems="center" gap={inube.spacing.s100}>
-          <ProgressBar
-            currentStep={currentStepIndex + 1}
-            arrayLength={steps.length}
-          />
-          {size === "large" && (
-            <Text type="label">
-              {currentStepIndex + 1}/{steps.length}
+            <StyledStepIndicator>
+              {currentStepId !== steps.length ? (
+                <Text type="label" size="medium" appearance="primary">
+                  {currentStepId}
+                </Text>
+              ) : (
+                <Icon
+                  appearance="primary"
+                  icon={<MdCheckCircle />}
+                  size="20px"
+                  spacing="compact"
+                />
+              )}
+            </StyledStepIndicator>
+            <Text
+              type="title"
+              size={size === "large" ? "medium" : "small"}
+              ellipsis
+            >
+              {currentStep?.label}
             </Text>
-          )}
-        </Stack>
-        <Text
-          type="label"
-          appearance="gray"
-          size="medium"
-          margin="12px 0px 0px 0px"
-        >
-          {currentStep?.description}
-        </Text>
-      </Stack>
-      {size === "large" && (
-        <Stack alignItems="center">
-          <Button
-            spacing="wide"
-            variant="none"
-            iconAfter={<MdArrowForward />}
-            onClick={() => interceptHandleNext(currentStep!.id)}
+            {size === "small" && (
+              <Icon
+                appearance="primary"
+                icon={<MdArrowForward style={{ padding: "0px 2px" }} />}
+                size="20px"
+                onClick={() => interceptHandleNext(currentStep!.id)}
+              />
+            )}
+          </Grid>
+          <Stack alignItems="center" gap="8px">
+            <ProgressBar
+              currentStep={currentStepIndex + 1}
+              arrayLength={steps.length}
+            />
+            {size === "large" && (
+              <Text type="label">
+                {currentStepIndex + 1}/{steps.length}
+              </Text>
+            )}
+          </Stack>
+          <Text
+            type="label"
+            appearance="gray"
+            size="medium"
+            margin="12px 0px 0px 0px"
           >
-            {currentStep?.id === steps.length ? finish : after}
-          </Button>
+            {currentStep?.description}
+          </Text>
         </Stack>
-      )}
-    </Grid>
+        {size === "large" && (
+          <Stack alignItems="center">
+            <Button
+              spacing="wide"
+              variant="none"
+              iconAfter={<MdArrowForward />}
+              onClick={() => interceptHandleNext(currentStep!.id)}
+            >
+              {currentStep?.id === steps.length ? finish : after}
+            </Button>
+          </Stack>
+        )}
+      </Grid>
+    </StyledGridContainer>
   );
 };
 
