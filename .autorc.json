@@ -1,5 +1,14 @@
 {
-  "plugins": ["git-tag", ["npm"]],
+  "plugins": [
+    "git-tag",
+    [
+      "npm",
+      {
+        "setRcToken": true,
+        "publishFlags": ["--access", "public"]
+      }
+    ]
+  ],
   "owner": "selsa-inube",
   "repo": "inubekit-assisted",
   "name": "cmarin",
