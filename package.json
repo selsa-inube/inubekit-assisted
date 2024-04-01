@@ -85,7 +85,7 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "repository": "cmarin001/inubekit-assisted",
+  "repository": "selsa-inube/inubekit-assisted",
   "auto": {
     "plugins": [
       "npm"
