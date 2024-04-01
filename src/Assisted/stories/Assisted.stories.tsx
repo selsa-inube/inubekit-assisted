@@ -1,5 +1,3 @@
-import { ThemeProvider } from "styled-components";
-import { presente } from "@inubekit/foundations";
 import { parameters, props } from "../props";
 import { AssistedController } from "./Assisted.Controller";
 import { Assisted, IAssisted } from "..";
@@ -53,6 +51,7 @@ const Default = (args: IAssisted) => <AssistedController {...args} />;
 
 Default.args = {
   steps: stepsMock,
+  size: "small",
   currentStepId: 3,
   titleButtonText: {
     before: "Anterior",
@@ -61,19 +60,5 @@ Default.args = {
   },
 };
 
-const theme = {
-  ...presente,
-};
-
-const Themed = (args: IAssisted) => (
-  <ThemeProvider theme={theme}>
-    <AssistedController {...args} />
-  </ThemeProvider>
-);
-
-Themed.args = {
-  ...Default.args,
-};
-
-export { Default, Themed };
+export { Default };
 export default story;
