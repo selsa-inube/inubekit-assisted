@@ -38,6 +38,7 @@ const ProgressBar = (props: IProgressBarProps) => {
 
 const Assisted = (props: IAssisted) => {
   const {
+    size = "large",
     steps,
     currentStepId,
     handlePrev,
@@ -80,9 +81,9 @@ const Assisted = (props: IAssisted) => {
   );
 
   return (
-    <StyledConstentAssisted>
-      <Grid templateColumns={!measure ? "1fr" : "auto 1fr auto"}>
-        {measure && (
+    <StyledConstentAssisted size={size}>
+      <Grid templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}>
+        {size === "large" && (
           <Stack alignItems="center">
             <Button
               spacing="wide"
@@ -101,7 +102,7 @@ const Assisted = (props: IAssisted) => {
 
         <Stack direction="column" margin="s0 s0 s075 s0">
           <Grid templateColumns="auto auto 1fr auto" gap="s100">
-            {!measure && (
+            {size === "small" && (
               <Icon
                 appearance={
                   inube.assisted.button.appearance as keyof typeof inube.text
@@ -136,7 +137,7 @@ const Assisted = (props: IAssisted) => {
             </StyledStepIndicator>
             <Text
               type="title"
-              size={measure ? "medium" : "small"}
+              size={size === "large" ? "medium" : "small"}
               appearance={
                 inube.assisted.title.appearance as keyof typeof inube.text
               }
@@ -144,7 +145,7 @@ const Assisted = (props: IAssisted) => {
             >
               {currentStep?.label}
             </Text>
-            {!measure && (
+            {size === "small" && (
               <Icon
                 appearance={
                   inube.assisted.button.appearance as keyof typeof inube.icon
@@ -160,7 +161,7 @@ const Assisted = (props: IAssisted) => {
               currentStep={currentStepIndex + 1}
               arrayLength={steps.length}
             />
-            {measure && (
+            {size === "large" && (
               <Text type="label">
                 {currentStepIndex + 1}/{steps.length}
               </Text>
@@ -177,7 +178,7 @@ const Assisted = (props: IAssisted) => {
             {currentStep?.description}
           </Text>
         </Stack>
-        {measure && (
+        {size === "large" && (
           <Stack alignItems="center">
             <Button
               appearance={
