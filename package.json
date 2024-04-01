@@ -85,7 +85,10 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "repository": "selsa-inube/inubekit-assisted",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selsa-inube/inubekit-assisted.git"
+  },
   "auto": {
     "plugins": [
       "npm"
