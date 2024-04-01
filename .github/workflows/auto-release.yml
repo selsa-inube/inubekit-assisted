@@ -19,7 +19,6 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org/"
-          scope: "@selsa-inube"
           always-auth: true
 
       - name: Configure Git
