@@ -37,7 +37,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "access": "public",
+    "@inubekit:registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@inubekit/button": "^1.0.0",
