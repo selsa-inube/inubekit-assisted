@@ -38,7 +38,7 @@ jobs:
         run: npm install
 
       - name: Run auto shipit
-        run: npx auto shipit
+        run: npx auto shipit --verbose
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
