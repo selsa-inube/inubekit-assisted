@@ -1,3 +1,35 @@
+# v2.0.0 (Mon Apr 01 2024)
+
+#### 💥 Breaking Change
+
+- Add size prop [#3](https://github.com/selsa-inube/inubekit-assisted/pull/3) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🚀 Enhancement
+
+- Configure auto publish [#7](https://github.com/selsa-inube/inubekit-assisted/pull/7) ([@cmarin001](https://github.com/cmarin001))
+- Implement try..catch in props of type function [#2](https://github.com/selsa-inube/inubekit-assisted/pull/2) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🐛 Bug Fix
+
+- upgrade node version [#8](https://github.com/selsa-inube/inubekit-assisted/pull/8) ([@cmarin001](https://github.com/cmarin001))
+- Adjust and publish `Assisted` inubekit repo [#1](https://github.com/selsa-inube/inubekit-assisted/pull/1) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### ⚠️ Pushed to `main`
+
+- fix(package.json): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+- fix(autorc): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+
+#### 🔩 Dependency Updates
+
+- Update inubekit/assisted to storybook v8 [#4](https://github.com/selsa-inube/inubekit-assisted/pull/4) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 2
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.0.2 (Wed Feb 14 2024)
 
 #### ⚠️ Pushed to `main`
