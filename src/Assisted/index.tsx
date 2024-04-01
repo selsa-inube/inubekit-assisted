@@ -5,7 +5,6 @@ import { Grid } from "@inubekit/grid";
 import { Icon } from "@inubekit/icon";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
-import { useMediaQuery } from "@inubekit/hooks";
 import { inube } from "@inubekit/foundations";
 
 import {
@@ -14,29 +13,14 @@ import {
   StyledProgressIndicator,
   StyledStepIndicator,
 } from "./styles";
-
-type IStep = {
-  id: number;
-  label: string;
-  description?: string;
-};
-
-interface IProgressBarProps {
-  currentStep: IStep["id"];
-  arrayLength: number;
-}
-
-type ITitleButton = {
-  before?: string;
-  after?: string;
-  finish?: string;
-};
+import { IProgressBarProps, ISize, IStep, ITitleButton } from "./props";
 
 interface IAssisted {
-  steps: IStep[];
   currentStepId: IStep["id"];
   handlePrev: (id: IStep["id"]) => void;
   handleNext: (id: IStep["id"]) => void;
+  steps: IStep[];
+  size?: ISize;
   titleButtonText?: ITitleButton;
 }
 
@@ -88,8 +72,6 @@ const Assisted = (props: IAssisted) => {
       }
     }
   };
-
-  const measure = useMediaQuery("(min-width: 600px)");
 
   const currentStep = steps.find((step) => step?.id === currentStepId);
 

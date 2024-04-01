@@ -25,6 +25,7 @@ const StyledProgressIndicator = styled.div`
     `${($currentStep / $arrayLength) * 100}%`};
   background: ${({ theme }) =>
     theme?.assisted?.bar?.color || inube.assisted.bar.color};
+    theme?.assisted?.bar?.color || inube.assisted.bar.color};
 `;
 
 const StyledStepIndicator = styled.div`
@@ -36,6 +37,7 @@ const StyledStepIndicator = styled.div`
   border-radius: 50%;
   border-width: 2px;
   border-style: solid;
+  margin-bottom: 8px;
   margin-bottom: 8px;
   border-color: ${({ theme }) =>
     theme?.assisted?.step?.color || inube.assisted.step.color};
