@@ -17,9 +17,6 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
