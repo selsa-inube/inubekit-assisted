@@ -1,3 +1,29 @@
+# v2.1.0 (Tue Apr 02 2024)
+
+#### 🚀 Enhancement
+
+- fix: update dependencies in order to change the place foundations [#12](https://github.com/selsa-inube/inubekit-assisted/pull/12) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🐛 Bug Fix
+
+- remove unnecessary code [#11](https://github.com/selsa-inube/inubekit-assisted/pull/11) ([@cmarin001](https://github.com/cmarin001))
+- remove unnecessary code [#10](https://github.com/selsa-inube/inubekit-assisted/pull/10) ([@cmarin001](https://github.com/cmarin001))
+
+#### ⚠️ Pushed to `main`
+
+- fix(auto-release): update configuration ([@cmarin001](https://github.com/cmarin001))
+- fix(auto-release): remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+- Revert "fix(auto-release): adjusment in order to run properly the publish step" ([@cmarin001](https://github.com/cmarin001))
+- Revert "Revert "fix(auto-release): adjusment in order to run properly the publish step"" ([@cmarin001](https://github.com/cmarin001))
+- fix(auto-release): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+- docs(release): new version 2.0.0 ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.0.0 (Mon Apr 01 2024)
 
 #### 💥 Breaking Change
