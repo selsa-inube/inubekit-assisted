@@ -14,6 +14,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check npm Registry URL Accessibility
+        run: |
+          curl --head --fail https://registry.npmjs.org/
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
