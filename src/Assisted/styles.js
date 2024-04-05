@@ -2,10 +2,15 @@ import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
 const StyledConstentAssisted = styled.div`
-  background-color: ${({ theme }) =>
-    theme?.assisted?.background?.color || inube.assisted.background.color};
-  border-radius: 8px;
-  padding: 16px;
+  > div {
+    background-color: ${({ theme }) =>
+      theme?.assisted?.background?.color || inube.assisted.background.color};
+    border-radius: 8px;
+    padding: 16px;
+    width: ${({ size }) => (size === "small" ? "312px" : "auto")};
+    height: 100%;
+    max-height: ${({ size }) => (size === "small" ? "84px" : "112px")};
+  }
 `;
 
 const StyledProgressBar = styled.div`
