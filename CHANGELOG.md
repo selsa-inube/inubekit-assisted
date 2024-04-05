@@ -1,3 +1,74 @@
+# v3.0.0 (Fri Apr 05 2024)
+
+#### 💥 Breaking Change
+
+- Refactor `<Assisted />` component to use new token structure [#6](https://github.com/selsa-inube/inubekit-assisted/pull/6) ([@JanuarAsprilla](https://github.com/JanuarAsprilla) [@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 2
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+- Januar Asprilla ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+
+---
+
+# v2.1.0 (Tue Apr 02 2024)
+
+#### 🚀 Enhancement
+
+- fix: update dependencies in order to change the place foundations [#12](https://github.com/selsa-inube/inubekit-assisted/pull/12) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🐛 Bug Fix
+
+- remove unnecessary code [#11](https://github.com/selsa-inube/inubekit-assisted/pull/11) ([@cmarin001](https://github.com/cmarin001))
+- remove unnecessary code [#10](https://github.com/selsa-inube/inubekit-assisted/pull/10) ([@cmarin001](https://github.com/cmarin001))
+
+#### ⚠️ Pushed to `main`
+
+- fix(auto-release): update configuration ([@cmarin001](https://github.com/cmarin001))
+- fix(auto-release): remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+- Revert "fix(auto-release): adjusment in order to run properly the publish step" ([@cmarin001](https://github.com/cmarin001))
+- Revert "Revert "fix(auto-release): adjusment in order to run properly the publish step"" ([@cmarin001](https://github.com/cmarin001))
+- fix(auto-release): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+- docs(release): new version 2.0.0 ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v2.0.0 (Mon Apr 01 2024)
+
+#### 💥 Breaking Change
+
+- Add size prop [#3](https://github.com/selsa-inube/inubekit-assisted/pull/3) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🚀 Enhancement
+
+- Configure auto publish [#7](https://github.com/selsa-inube/inubekit-assisted/pull/7) ([@cmarin001](https://github.com/cmarin001))
+- Implement try..catch in props of type function [#2](https://github.com/selsa-inube/inubekit-assisted/pull/2) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🐛 Bug Fix
+
+- upgrade node version [#8](https://github.com/selsa-inube/inubekit-assisted/pull/8) ([@cmarin001](https://github.com/cmarin001))
+- Adjust and publish `Assisted` inubekit repo [#1](https://github.com/selsa-inube/inubekit-assisted/pull/1) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### ⚠️ Pushed to `main`
+
+- fix(package.json): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+- fix(autorc): adjusment in order to run properly the publish step ([@cmarin001](https://github.com/cmarin001))
+
+#### 🔩 Dependency Updates
+
+- Update inubekit/assisted to storybook v8 [#4](https://github.com/selsa-inube/inubekit-assisted/pull/4) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 2
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.0.2 (Wed Feb 14 2024)
 
 #### ⚠️ Pushed to `main`
@@ -15,7 +86,7 @@
 #### Authors: 2
 
 - Andres Babativa (carlos3k11@gmail.com)
-- Januar Asprilla  ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+- Januar Asprilla ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
 
 ---
 

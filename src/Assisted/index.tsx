@@ -3,43 +3,47 @@ import { MdArrowBack, MdArrowForward, MdCheckCircle } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Grid } from "@inubekit/grid";
 import { Icon } from "@inubekit/icon";
-import { inube } from "@inubekit/foundations";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
-import { useMediaQuery } from "@inubekit/hooks";
+import { inube } from "@inubekit/foundations";
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
 
 import {
+  StyledConstentAssisted,
   StyledProgressBar,
   StyledProgressIndicator,
   StyledStepIndicator,
 } from "./styles";
+import { ISize } from "./props";
 
-type IAssistedIStep = {
+type IAssistedStep = {
   id: number;
   label: string;
   description?: string;
 };
 
-interface IAssistedIProgressBarProps {
-  currentStep: IAssistedIStep["id"];
+interface IAssistedProgressBarProps {
+  currentStep: IAssistedStep["id"];
   arrayLength: number;
 }
 
-type IAssistedITitleButton = {
+type IAssistedTitleButton = {
   before?: string;
   after?: string;
   finish?: string;
 };
 
 interface IAssisted {
-  steps: IAssistedIStep[];
-  currentStepId: IAssistedIStep["id"];
-  handlePrev: (id: IAssistedIStep["id"]) => void;
-  handleNext: (id: IAssistedIStep["id"]) => void;
-  titleButtonText?: IAssistedITitleButton;
+  steps: IAssistedStep[];
+  currentStepId: IAssistedStep["id"];
+  handlePrev: (id: IAssistedStep["id"]) => void;
+  handleNext: (id: IAssistedStep["id"]) => void;
+  titleButtonText?: IAssistedTitleButton;
+  size?: ISize;
 }
 
-const ProgressBar = (props: IAssistedIProgressBarProps) => {
+const ProgressBar = (props: IAssistedProgressBarProps) => {
   const { currentStep, arrayLength } = props;
   return (
     <StyledProgressBar>
@@ -53,6 +57,7 @@ const ProgressBar = (props: IAssistedIProgressBarProps) => {
 
 const Assisted = (props: IAssisted) => {
   const {
+    size = "large",
     steps,
     currentStepId,
     handlePrev,
@@ -63,8 +68,19 @@ const Assisted = (props: IAssisted) => {
       finish: "Send",
     },
   } = props;
+  const theme: typeof inube = useContext(ThemeContext);
 
-  const interceptHandlePrev = (id: IAssistedIStep["id"]) => {
+  const assistedButtonAppearance =
+    theme?.assisted?.button?.appearance || inube.assisted.button.appearance;
+
+  const assistedDescriptionAppearance =
+    theme?.assisted?.description?.appearance ||
+    inube.assisted.description.appearance;
+
+  const assistedTitleAppearance =
+    theme?.assisted?.title?.appearance || inube.assisted.title.appearance;
+
+  const interceptHandlePrev = (id: IAssistedStep["id"]) => {
     try {
       handlePrev && handlePrev(id);
     } catch (error) {
@@ -76,7 +92,7 @@ const Assisted = (props: IAssisted) => {
     }
   };
 
-  const interceptHandleNext = (id: IAssistedIStep["id"]) => {
+  const interceptHandleNext = (id: IAssistedStep["id"]) => {
     try {
       handleNext && handleNext(id);
     } catch (error) {
@@ -88,108 +104,129 @@ const Assisted = (props: IAssisted) => {
     }
   };
 
-  const measure = useMediaQuery("(min-width: 600px)");
-
   const currentStep = steps.find((step) => step?.id === currentStepId);
 
   const currentStepIndex = steps.findIndex(
-    (step) => step?.id === currentStepId
+    (step) => step?.id === currentStepId,
   );
 
   return (
-    <Grid templateColumns={!measure ? "1fr" : "auto 1fr auto"}>
-      {measure && (
-        <Stack alignItems="center">
-          <Button
-            spacing="wide"
-            variant="none"
-            iconBefore={<MdArrowBack />}
-            onClick={() => interceptHandlePrev(currentStep!.id)}
-            appearance="primary"
-            disabled={currentStepIndex === 0}
-          >
-            {before}
-          </Button>
-        </Stack>
-      )}
-
-      <Stack direction="column" margin="s0 s0 s075 s0">
-        <Grid templateColumns="auto auto 1fr auto" gap="s100">
-          {!measure && (
-            <Icon
-              appearance="primary"
-              icon={<MdArrowBack style={{ padding: "2px 0px" }} />}
-              size="20px"
+    <StyledConstentAssisted size={size}>
+      <Grid templateColumns={size === "small" ? "1fr" : "auto 1fr auto"}>
+        {size === "large" && (
+          <Stack alignItems="center">
+            <Button
+              spacing="wide"
+              variant="none"
+              iconBefore={<MdArrowBack />}
               onClick={() => interceptHandlePrev(currentStep!.id)}
+              appearance={assistedButtonAppearance as keyof typeof inube.button}
               disabled={currentStepIndex === 0}
-            />
-          )}
-          <StyledStepIndicator>
-            {currentStepId !== steps.length ? (
-              <Text type="label" size="medium" appearance="primary">
-                {currentStepId}
-              </Text>
-            ) : (
+            >
+              {before}
+            </Button>
+          </Stack>
+        )}
+
+        <Stack direction="column" margin="0 0 6px 0">
+          <Grid templateColumns="auto auto 1fr auto" gap="8px">
+            {size === "small" && (
               <Icon
-                appearance="primary"
-                icon={<MdCheckCircle />}
+                appearance={
+                  assistedButtonAppearance as keyof typeof inube.button
+                }
+                icon={<MdArrowBack />}
                 size="20px"
+                onClick={() => interceptHandlePrev(currentStep!.id)}
+                disabled={currentStepIndex === 0}
                 spacing="compact"
               />
             )}
-          </StyledStepIndicator>
-          <Text type="title" size={measure ? "medium" : "small"} ellipsis>
-            {currentStep?.label}
-          </Text>
-          {!measure && (
-            <Icon
-              appearance="primary"
-              icon={<MdArrowForward style={{ padding: "0px 2px" }} />}
-              size="20px"
-              onClick={() => interceptHandleNext(currentStep!.id)}
-            />
-          )}
-        </Grid>
-        <Stack alignItems="center" gap={inube.spacing.s100}>
-          <ProgressBar
-            currentStep={currentStepIndex + 1}
-            arrayLength={steps.length}
-          />
-          {measure && (
-            <Text type="label">
-              {currentStepIndex + 1}/{steps.length}
+            <StyledStepIndicator>
+              {currentStepId !== steps.length ? (
+                <Text
+                  type="label"
+                  size="medium"
+                  appearance={
+                    assistedButtonAppearance as keyof typeof inube.text
+                  }
+                >
+                  {currentStepId}
+                </Text>
+              ) : (
+                <Icon
+                  appearance={
+                    assistedButtonAppearance as keyof typeof inube.icon
+                  }
+                  icon={<MdCheckCircle />}
+                  size="20px"
+                  spacing="compact"
+                />
+              )}
+            </StyledStepIndicator>
+            <Text
+              type="title"
+              size={size === "large" ? "medium" : "small"}
+              appearance={assistedTitleAppearance as keyof typeof inube.text}
+              ellipsis
+              margin="0 0 0 10px"
+              padding="2px 0 0 0"
+            >
+              {currentStep?.label}
             </Text>
-          )}
-        </Stack>
-        <Text
-          type="label"
-          appearance="gray"
-          size="medium"
-          margin="12px 0px 0px 0px"
-        >
-          {currentStep?.description}
-        </Text>
-      </Stack>
-      {measure && (
-        <Stack alignItems="center">
-          <Button
-            spacing="wide"
-            variant="none"
-            iconAfter={<MdArrowForward />}
-            onClick={() => interceptHandleNext(currentStep!.id)}
+            {size === "small" && (
+              <Icon
+                appearance={assistedButtonAppearance as keyof typeof inube.icon}
+                icon={<MdArrowForward />}
+                size="20px"
+                onClick={() => interceptHandleNext(currentStep!.id)}
+              />
+            )}
+          </Grid>
+          <Stack alignItems="center" gap="8px">
+            <ProgressBar
+              currentStep={currentStepIndex + 1}
+              arrayLength={steps.length}
+            />
+            {size === "large" && (
+              <Text type="label">
+                {currentStepIndex + 1}/{steps.length}
+              </Text>
+            )}
+          </Stack>
+          <Text
+            type="label"
+            appearance={
+              assistedDescriptionAppearance as keyof typeof inube.text
+            }
+            size="medium"
+            margin="12px 0px 0px 0px"
           >
-            {currentStep?.id === steps.length ? finish : after}
-          </Button>
+            {currentStep?.description}
+          </Text>
         </Stack>
-      )}
-    </Grid>
+        {size === "large" && (
+          <Stack alignItems="center">
+            <Button
+              appearance={assistedButtonAppearance as keyof typeof inube.button}
+              spacing="wide"
+              variant="none"
+              iconAfter={<MdArrowForward />}
+              onClick={() => interceptHandleNext(currentStep!.id)}
+            >
+              {currentStep?.id === steps.length ? finish : after}
+            </Button>
+          </Stack>
+        )}
+      </Grid>
+    </StyledConstentAssisted>
   );
 };
 
 export { Assisted };
 export type {
   IAssisted,
-  IAssistedIStep,
-  IAssistedITitleButton,
-  IAssistedIProgressBarProps,
+  IAssistedStep,
+  IAssistedTitleButton,
+  IAssistedProgressBarProps,
 };

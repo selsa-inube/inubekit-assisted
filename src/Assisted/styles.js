@@ -1,13 +1,25 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
+const StyledConstentAssisted = styled.div`
+  > div {
+    background-color: ${({ theme }) =>
+      theme?.assisted?.background?.color || inube.assisted.background.color};
+    border-radius: 8px;
+    padding: 16px;
+    width: ${({ size }) => (size === "small" ? "312px" : "auto")};
+    height: 100%;
+    max-height: ${({ size }) => (size === "small" ? "84px" : "112px")};
+  }
+`;
+
 const StyledProgressBar = styled.div`
   border-radius: 10px;
   transition: width 0.5s;
   height: 16px;
   width: 100%;
   background-color: ${({ theme }) =>
-    theme?.color?.surface?.dark?.clear || inube.color.surface.dark.clear};
+    theme?.assisted?.track?.color || inube.assisted.track.color};
 `;
 
 const StyledProgressIndicator = styled.div`
@@ -17,8 +29,8 @@ const StyledProgressIndicator = styled.div`
   width: ${({ $arrayLength, $currentStep }) =>
     `${($currentStep / $arrayLength) * 100}%`};
   background: ${({ theme }) =>
-    theme?.color?.surface?.primary?.regular ||
-    inube.color.surface.primary?.regular};
+    theme?.assisted?.bar?.color || inube.assisted.bar.color};
+    theme?.assisted?.bar?.color || inube.assisted.bar.color};
 `;
 
 const StyledStepIndicator = styled.div`
@@ -30,10 +42,15 @@ const StyledStepIndicator = styled.div`
   border-radius: 50%;
   border-width: 2px;
   border-style: solid;
-  margin-bottom: ${inube.spacing.s100};
+  margin-bottom: 8px;
+  margin-bottom: 8px;
   border-color: ${({ theme }) =>
-    theme?.color?.stroke?.primary?.regular ||
-    inube.color.stroke.primary?.regular};
+    theme?.assisted?.step?.color || inube.assisted.step.color};
 `;
 
-export { StyledProgressBar, StyledProgressIndicator, StyledStepIndicator };
+export {
+  StyledConstentAssisted,
+  StyledProgressBar,
+  StyledProgressIndicator,
+  StyledStepIndicator,
+};

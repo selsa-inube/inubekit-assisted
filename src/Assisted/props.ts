@@ -1,3 +1,23 @@
+type IStep = {
+  id: number;
+  label: string;
+  description?: string;
+};
+
+interface IProgressBarProps {
+  currentStep: IStep["id"];
+  arrayLength: number;
+}
+
+type ITitleButton = {
+  before?: string;
+  after?: string;
+  finish?: string;
+};
+
+const sizes = ["small", "large"] as const;
+type ISize = (typeof sizes)[number];
+
 const parameters = {
   docs: {
     descriptions: {
@@ -34,6 +54,15 @@ const props = {
     description:
       "(string): (Optional) A string to be displayed in the button after the label of the current step.",
   },
+  size: {
+    options: sizes,
+    control: { type: "select" },
+    description: "assited's size",
+    table: {
+      defaultValue: { summary: "wide" },
+    },
+  },
 };
 
 export { parameters, props };
+export type { IStep, ISize, IProgressBarProps, ITitleButton };
