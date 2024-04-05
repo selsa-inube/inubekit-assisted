@@ -15,18 +15,23 @@ import {
   StyledProgressIndicator,
   StyledStepIndicator,
 } from "./styles";
-import { IProgressBarProps, ISize, IStep, ITitleButton } from "./props";
+import {
+  IAssistedStep,
+  IAssistedProgressBarProps,
+  IAssistedTitleButton,
+  IAssistedSize,
+} from "./props";
 
 interface IAssisted {
-  currentStepId: IStep["id"];
-  handlePrev: (id: IStep["id"]) => void;
-  handleNext: (id: IStep["id"]) => void;
-  steps: IStep[];
-  size?: ISize;
-  titleButtonText?: ITitleButton;
+  steps: IAssistedStep[];
+  currentStepId: IAssistedStep["id"];
+  handlePrev: (id: IAssistedStep["id"]) => void;
+  handleNext: (id: IAssistedStep["id"]) => void;
+  titleButtonText?: IAssistedTitleButton;
+  size?: IAssistedSize;
 }
 
-const ProgressBar = (props: IProgressBarProps) => {
+const ProgressBar = (props: IAssistedProgressBarProps) => {
   const { currentStep, arrayLength } = props;
   return (
     <StyledProgressBar>
@@ -51,7 +56,6 @@ const Assisted = (props: IAssisted) => {
       finish: "Send",
     },
   } = props;
-
   const theme: typeof inube = useContext(ThemeContext);
 
   const assistedButtonAppearance =
@@ -64,7 +68,7 @@ const Assisted = (props: IAssisted) => {
   const assistedTitleAppearance =
     theme?.assisted?.title?.appearance || inube.assisted.title.appearance;
 
-  const interceptHandlePrev = (id: IStep["id"]) => {
+  const interceptHandlePrev = (id: IAssistedStep["id"]) => {
     try {
       handlePrev && handlePrev(id);
     } catch (error) {
@@ -76,7 +80,7 @@ const Assisted = (props: IAssisted) => {
     }
   };
 
-  const interceptHandleNext = (id: IStep["id"]) => {
+  const interceptHandleNext = (id: IAssistedStep["id"]) => {
     try {
       handleNext && handleNext(id);
     } catch (error) {
