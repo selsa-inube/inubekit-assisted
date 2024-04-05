@@ -15,24 +15,12 @@ import {
   StyledProgressIndicator,
   StyledStepIndicator,
 } from "./styles";
-import { ISize } from "./props";
-
-type IAssistedStep = {
-  id: number;
-  label: string;
-  description?: string;
-};
-
-interface IAssistedProgressBarProps {
-  currentStep: IAssistedStep["id"];
-  arrayLength: number;
-}
-
-type IAssistedTitleButton = {
-  before?: string;
-  after?: string;
-  finish?: string;
-};
+import {
+  IAssistedStep,
+  IAssistedProgressBarProps,
+  IAssistedTitleButton,
+  IAssistedSize,
+} from "./props";
 
 interface IAssisted {
   steps: IAssistedStep[];
@@ -40,7 +28,7 @@ interface IAssisted {
   handlePrev: (id: IAssistedStep["id"]) => void;
   handleNext: (id: IAssistedStep["id"]) => void;
   titleButtonText?: IAssistedTitleButton;
-  size?: ISize;
+  size?: IAssistedSize;
 }
 
 const ProgressBar = (props: IAssistedProgressBarProps) => {
@@ -224,9 +212,4 @@ const Assisted = (props: IAssisted) => {
 };
 
 export { Assisted };
-export type {
-  IAssisted,
-  IAssistedStep,
-  IAssistedTitleButton,
-  IAssistedProgressBarProps,
-};
+export type { IAssisted };

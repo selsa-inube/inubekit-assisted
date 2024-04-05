@@ -1,7 +1,8 @@
 export { Assisted } from "./Assisted";
+export type { IAssisted } from "./Assisted";
 export type {
-  IAssisted,
   IAssistedStep,
   IAssistedTitleButton,
   IAssistedProgressBarProps,
-} from "./Assisted";
+  IAssistedSize,
+} from "./Assisted/props";

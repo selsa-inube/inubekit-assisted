@@ -1,22 +1,21 @@
-type IStep = {
+type IAssistedStep = {
   id: number;
   label: string;
   description?: string;
 };
 
-interface IProgressBarProps {
-  currentStep: IStep["id"];
+interface IAssistedProgressBarProps {
+  currentStep: IAssistedStep["id"];
   arrayLength: number;
 }
 
-type ITitleButton = {
+type IAssistedTitleButton = {
   before?: string;
   after?: string;
   finish?: string;
 };
-
 const sizes = ["small", "large"] as const;
-type ISize = (typeof sizes)[number];
+type IAssistedSize = (typeof sizes)[number];
 
 const parameters = {
   docs: {
@@ -65,4 +64,9 @@ const props = {
 };
 
 export { parameters, props };
-export type { IStep, ISize, IProgressBarProps, ITitleButton };
+export type {
+  IAssistedStep,
+  IAssistedProgressBarProps,
+  IAssistedTitleButton,
+  IAssistedSize,
+};
