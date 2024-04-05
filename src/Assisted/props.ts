@@ -1,19 +1,20 @@
-type IAssistedStep = {
+interface IAssistedStep {
   id: number;
   label: string;
   description?: string;
-};
+}
 
 interface IAssistedProgressBarProps {
   currentStep: IAssistedStep["id"];
   arrayLength: number;
 }
 
-type IAssistedTitleButton = {
+interface IAssistedTitleButton {
   before?: string;
   after?: string;
   finish?: string;
-};
+}
+
 const sizes = ["small", "large"] as const;
 type IAssistedSize = (typeof sizes)[number];
 
