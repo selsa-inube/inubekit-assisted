@@ -51,7 +51,7 @@ const Default = (args: IAssisted) => <AssistedController {...args} />;
 
 Default.args = {
   steps: stepsMock,
-  size: "small",
+  size: "large",
   currentStepId: 3,
   titleButtonText: {
     before: "Anterior",
