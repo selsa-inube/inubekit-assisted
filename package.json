@@ -10,7 +10,7 @@
   ],
   "description": "",
   "private": false,
-  "version": "1.0.0",
+  "version": "2.1.0",
   "type": "module",
   "exports": {
     ".": {
@@ -52,7 +52,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "@inubekit/foundations": "^2.12.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
@@ -86,7 +87,10 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "repository": "selsa-inube/inubekit-assisted",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selsa-inube/inubekit-assisted.git"
+  },
   "auto": {
     "plugins": [
       "npm"

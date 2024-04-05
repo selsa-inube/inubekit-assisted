@@ -8,10 +8,13 @@ on:
 jobs:
   autorelease:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
+          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -38,5 +41,5 @@ jobs:
       - name: Run auto shipit
         run: npx auto shipit
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
