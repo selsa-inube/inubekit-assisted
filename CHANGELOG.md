@@ -1,3 +1,15 @@
+# v4.1.1 (Tue Apr 09 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix(assisted): remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v4.1.0 (Tue Apr 09 2024)
 
 #### 🚀 Enhancement
