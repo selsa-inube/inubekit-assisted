@@ -1,10 +1,10 @@
 import { MdArrowBack, MdArrowForward, MdCheckCircle } from "react-icons/md";
 
-import { Button } from "@inubekit/button";
+import { Button, IButtonAppearance } from "@inubekit/button";
 import { Grid } from "@inubekit/grid";
 import { Icon } from "@inubekit/icon";
 import { Stack } from "@inubekit/stack";
-import { Text } from "@inubekit/text";
+import { ITextAppearance, Text } from "@inubekit/text";
 import { inube } from "@inubekit/foundations";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
@@ -58,15 +58,14 @@ const Assisted = (props: IAssisted) => {
   } = props;
   const theme: typeof inube = useContext(ThemeContext);
 
-  const assistedButtonAppearance =
-    theme?.assisted?.button?.appearance || inube.assisted.button.appearance;
+  const assistedButtonAppearance = (theme?.assisted?.button?.appearance ||
+    inube.assisted.button.appearance) as IButtonAppearance;
 
-  const assistedDescriptionAppearance =
-    theme?.assisted?.description?.appearance ||
-    inube.assisted.description.appearance;
+  const assistedDescriptionAppearance = (theme?.assisted?.description
+    ?.appearance || inube.assisted.description.appearance) as ITextAppearance;
 
-  const assistedTitleAppearance =
-    theme?.assisted?.title?.appearance || inube.assisted.title.appearance;
+  const assistedTitleAppearance = (theme?.assisted?.title?.appearance ||
+    inube.assisted.title.appearance) as ITextAppearance;
 
   const interceptHandlePrev = (id: IAssistedStep["id"]) => {
     try {
@@ -108,7 +107,7 @@ const Assisted = (props: IAssisted) => {
               variant="none"
               iconBefore={<MdArrowBack />}
               onClick={() => interceptHandlePrev(currentStep!.id)}
-              appearance={assistedButtonAppearance as keyof typeof inube.button}
+              appearance={assistedButtonAppearance}
               disabled={currentStepIndex === 0}
             >
               {before}
@@ -120,9 +119,7 @@ const Assisted = (props: IAssisted) => {
           <Grid templateColumns="auto auto 1fr auto" gap="8px">
             {size === "small" && (
               <Icon
-                appearance={
-                  assistedButtonAppearance as keyof typeof inube.button
-                }
+                appearance={assistedButtonAppearance}
                 icon={<MdArrowBack />}
                 size="20px"
                 onClick={() => interceptHandlePrev(currentStep!.id)}
@@ -135,17 +132,13 @@ const Assisted = (props: IAssisted) => {
                 <Text
                   type="label"
                   size="medium"
-                  appearance={
-                    assistedButtonAppearance as keyof typeof inube.text
-                  }
+                  appearance={assistedButtonAppearance}
                 >
                   {currentStepId}
                 </Text>
               ) : (
                 <Icon
-                  appearance={
-                    assistedButtonAppearance as keyof typeof inube.icon
-                  }
+                  appearance={assistedButtonAppearance}
                   icon={<MdCheckCircle />}
                   size="20px"
                   spacing="compact"
@@ -155,7 +148,7 @@ const Assisted = (props: IAssisted) => {
             <Text
               type="title"
               size={size === "large" ? "medium" : "small"}
-              appearance={assistedTitleAppearance as keyof typeof inube.text}
+              appearance={assistedTitleAppearance}
               ellipsis
               margin="0 0 0 10px"
               padding="2px 0 0 0"
@@ -164,7 +157,7 @@ const Assisted = (props: IAssisted) => {
             </Text>
             {size === "small" && (
               <Icon
-                appearance={assistedButtonAppearance as keyof typeof inube.icon}
+                appearance={assistedButtonAppearance}
                 icon={<MdArrowForward />}
                 size="20px"
                 onClick={() => interceptHandleNext(currentStep!.id)}
@@ -184,9 +177,7 @@ const Assisted = (props: IAssisted) => {
           </Stack>
           <Text
             type="label"
-            appearance={
-              assistedDescriptionAppearance as keyof typeof inube.text
-            }
+            appearance={assistedDescriptionAppearance}
             size="medium"
             margin="12px 0px 0px 0px"
           >
