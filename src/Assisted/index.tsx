@@ -187,7 +187,7 @@ const Assisted = (props: IAssisted) => {
         {size === "large" && (
           <Stack alignItems="center">
             <Button
-              appearance={assistedButtonAppearance as keyof typeof inube.button}
+              appearance={assistedButtonAppearance}
               spacing="wide"
               variant="none"
               iconAfter={<MdArrowForward />}
