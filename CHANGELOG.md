@@ -1,3 +1,15 @@
+# v4.2.0 (Tue Apr 30 2024)
+
+#### 🚀 Enhancement
+
+- Explore how we can use status checks to prevent merges with failed builds [#14](https://github.com/selsa-inube/inubekit-assisted/pull/14) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v4.1.1 (Tue Apr 09 2024)
 
 #### ⚠️ Pushed to `main`
