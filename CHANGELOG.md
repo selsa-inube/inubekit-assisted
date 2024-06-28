@@ -1,3 +1,15 @@
+# v4.3.0 (Fri Jun 28 2024)
+
+#### 🚀 Enhancement
+
+- Update Project Dependencies [#15](https://github.com/selsa-inube/inubekit-assisted/pull/15) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v4.2.0 (Tue Apr 30 2024)
 
 #### 🚀 Enhancement
