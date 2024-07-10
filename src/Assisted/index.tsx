@@ -133,6 +133,7 @@ const Assisted = (props: IAssisted) => {
                   type="label"
                   size="medium"
                   appearance={assistedButtonAppearance}
+                  weight="bold"
                 >
                   {currentStepId}
                 </Text>
@@ -170,7 +171,7 @@ const Assisted = (props: IAssisted) => {
               arrayLength={steps.length}
             />
             {size === "large" && (
-              <Text type="label">
+              <Text type="label" weight="bold">
                 {currentStepIndex + 1}/{steps.length}
               </Text>
             )}
@@ -180,6 +181,7 @@ const Assisted = (props: IAssisted) => {
             appearance={assistedDescriptionAppearance}
             size="medium"
             margin="12px 0px 0px 0px"
+            weight="bold"
           >
             {currentStep?.description}
           </Text>
