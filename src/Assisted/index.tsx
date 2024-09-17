@@ -9,18 +9,10 @@ import { inube } from "@inubekit/foundations";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
-import {
-  StyledConstentAssisted,
-  StyledProgressBar,
-  StyledProgressIndicator,
-  StyledStepIndicator,
-} from "./styles";
-import {
-  IAssistedStep,
-  IAssistedProgressBarProps,
-  IAssistedTitleButton,
-  IAssistedSize,
-} from "./props";
+import { StyledConstentAssisted, StyledStepIndicator } from "./styles";
+import { IAssistedStep, IAssistedTitleButton, IAssistedSize } from "./props";
+
+import { ProgressBar } from "./ProgressBar";
 
 interface IAssisted {
   steps: IAssistedStep[];
@@ -30,18 +22,6 @@ interface IAssisted {
   titleButtonText?: IAssistedTitleButton;
   size?: IAssistedSize;
 }
-
-const ProgressBar = (props: IAssistedProgressBarProps) => {
-  const { currentStep, arrayLength } = props;
-  return (
-    <StyledProgressBar>
-      <StyledProgressIndicator
-        $currentStep={currentStep}
-        $arrayLength={arrayLength}
-      />
-    </StyledProgressBar>
-  );
-};
 
 const Assisted = (props: IAssisted) => {
   const {
@@ -168,7 +148,7 @@ const Assisted = (props: IAssisted) => {
           <Stack alignItems="center" gap="8px">
             <ProgressBar
               currentStep={currentStepIndex + 1}
-              arrayLength={steps.length}
+              totalSteps={steps.length}
             />
             {size === "large" && (
               <Text type="label" weight="bold">

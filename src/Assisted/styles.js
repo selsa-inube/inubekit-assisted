@@ -13,26 +13,6 @@ const StyledConstentAssisted = styled.div`
   }
 `;
 
-const StyledProgressBar = styled.div`
-  border-radius: 10px;
-  transition: width 0.5s;
-  height: 16px;
-  width: 100%;
-  background-color: ${({ theme }) =>
-    theme?.assisted?.track?.color || inube.assisted.track.color};
-`;
-
-const StyledProgressIndicator = styled.div`
-  border-radius: 8px;
-  transition: width 0.5s;
-  height: 16px;
-  width: ${({ $arrayLength, $currentStep }) =>
-    `${($currentStep / $arrayLength) * 100}%`};
-  background: ${({ theme }) =>
-    theme?.assisted?.bar?.color || inube.assisted.bar.color};
-    theme?.assisted?.bar?.color || inube.assisted.bar.color};
-`;
-
 const StyledStepIndicator = styled.div`
   display: flex;
   justify-content: center;
@@ -48,9 +28,4 @@ const StyledStepIndicator = styled.div`
     theme?.assisted?.step?.color || inube.assisted.step.color};
 `;
 
-export {
-  StyledConstentAssisted,
-  StyledProgressBar,
-  StyledProgressIndicator,
-  StyledStepIndicator,
-};
+export { StyledConstentAssisted, StyledStepIndicator };
