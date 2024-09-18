@@ -52,6 +52,9 @@ const Default = (args: IAssistedController) => <AssistedController {...args} />;
 Default.args = {
   steps: stepsMock,
   size: "large",
+  disableBack: false,
+  disableNext: false,
+  disableSubmit: false,
   controls: {
     goBackText: "Anterior",
     goNextText: "Siguiente",
