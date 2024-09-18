@@ -5,11 +5,15 @@ import { IAssistedStep } from "../props";
 interface IAssistedController {
   steps: IAssistedStep[];
   size: IAssisted["size"];
+  disableBack: IAssisted["disableBack"];
+  disableNext: IAssisted["disableNext"];
+  disableSubmit: IAssisted["disableSubmit"];
   controls: IAssisted["controls"];
 }
 
 const AssistedController = (props: IAssistedController) => {
-  const { steps, size, controls } = props;
+  const { steps, size, controls, disableBack, disableNext, disableSubmit } =
+    props;
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   function handleBackClick() {
@@ -31,6 +35,9 @@ const AssistedController = (props: IAssistedController) => {
       size={size}
       controls={controls}
       step={steps[currentStepIndex]}
+      disableNext={disableNext}
+      disableBack={disableBack}
+      disableSubmit={disableSubmit}
       totalSteps={steps.length}
       onBackClick={handleBackClick}
       onNextClick={handleNextClick}

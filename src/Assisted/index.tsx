@@ -6,6 +6,9 @@ interface IAssisted {
   size?: IAssistedSize;
   step: IAssistedStep;
   totalSteps: number;
+  disableNext?: boolean;
+  disableBack?: boolean;
+  disableSubmit?: boolean;
   onBackClick: (step: IAssistedStep) => void;
   onNextClick: (step: IAssistedStep) => void;
   onSubmitClick: (step: IAssistedStep) => void;
@@ -17,6 +20,9 @@ const Assisted = (props: IAssisted) => {
     size = "large",
     step,
     totalSteps,
+    disableNext = false,
+    disableBack = false,
+    disableSubmit = false,
     onBackClick,
     onNextClick,
     onSubmitClick,
@@ -56,6 +62,9 @@ const Assisted = (props: IAssisted) => {
       size={size}
       step={step}
       totalSteps={totalSteps}
+      disableNext={disableNext}
+      disableBack={disableBack}
+      disableSubmit={disableSubmit}
       onBackClick={interceptOnBackClick}
       onNextClick={interceptOnNextClick}
       onSubmitClick={interceptOnSendClick}

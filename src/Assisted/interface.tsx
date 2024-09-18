@@ -22,6 +22,9 @@ interface IAssistedUI {
   size: IAssisted["size"];
   step: IAssistedStep;
   totalSteps: number;
+  disableNext: IAssisted["disableNext"];
+  disableBack: IAssisted["disableBack"];
+  disableSubmit: IAssisted["disableSubmit"];
   onBackClick: IAssisted["onBackClick"];
   onNextClick: IAssisted["onNextClick"];
   onSubmitClick: IAssisted["onSubmitClick"];
@@ -33,6 +36,9 @@ function AssistedUI(props: IAssistedUI) {
     size,
     step,
     totalSteps,
+    disableNext,
+    disableBack,
+    disableSubmit,
     onBackClick,
     onNextClick,
     onSubmitClick,
@@ -47,17 +53,18 @@ function AssistedUI(props: IAssistedUI) {
   if (size === "large") {
     return (
       <StyledAssisted $size={size}>
-        <Grid templateColumns="auto 1fr auto" alignItems="center">
+        <Grid templateColumns="auto 1fr auto" alignItems="center" gap="16px">
           <Button
             variant="none"
             iconBefore={<MdArrowBack />}
+            disabled={step.number === 1 || disableBack}
+            cursorHover={true}
             onClick={() => onBackClick(step)}
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IButton["appearance"])
                 : (inube.assisted.button.appearance as IButton["appearance"])
             }
-            disabled={step.number === 1}
           >
             {controls!.goBackText}
           </Button>
@@ -104,12 +111,14 @@ function AssistedUI(props: IAssistedUI) {
           </Stack>
           <Button
             variant="none"
+            iconAfter={<MdArrowForward />}
+            disabled={isLastStep() ? disableSubmit : disableNext}
+            cursorHover={true}
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IButton["appearance"])
                 : (inube.assisted.button.appearance as IButton["appearance"])
             }
-            iconAfter={<MdArrowForward />}
             onClick={() => {
               isLastStep() ? onSubmitClick(step) : onNextClick(step);
             }}
@@ -129,7 +138,7 @@ function AssistedUI(props: IAssistedUI) {
             icon={<MdArrowBack />}
             size="20px"
             onClick={() => onBackClick(step)}
-            disabled={step.number === 0}
+            disabled={step.number === 1 || disableBack}
             cursorHover={true}
             appearance={
               theme
@@ -156,6 +165,7 @@ function AssistedUI(props: IAssistedUI) {
           <Icon
             icon={<MdArrowForward />}
             size="20px"
+            disabled={isLastStep() ? disableSubmit : disableNext}
             cursorHover={true}
             onClick={
               isLastStep() ? () => onSubmitClick(step) : () => onNextClick(step)
