@@ -1,3 +1,15 @@
+# v6.0.0 (Wed Sep 18 2024)
+
+#### 💥 Breaking Change
+
+- feat: extend interface to control disabled back, next and submit buttons [#51](https://github.com/selsa-inube/inubekit-assisted/pull/51) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v5.0.0 (Wed Sep 18 2024)
 
 #### 💥 Breaking Change
