@@ -1,30 +1,43 @@
 import { useState } from "react";
 import { Assisted, IAssisted } from "..";
+import { IAssistedStep } from "../props";
 
-const AssistedController = (props: IAssisted) => {
-  const { steps, currentStepId } = props;
+interface IAssistedController {
+  steps: IAssistedStep[];
+  size: IAssisted["size"];
+  controls: IAssisted["controls"];
+}
 
-  const [currentStep, setCurrentStep] = useState(currentStepId);
+const AssistedController = (props: IAssistedController) => {
+  const { steps, size, controls } = props;
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  const handlePrev = (id: number) => {
-    setCurrentStep(id - 1);
-  };
-
-  const handleNext = (id: number) => {
-    if (steps.length > id) {
-      setCurrentStep(id + 1);
+  function handleBackClick() {
+    if (currentStepIndex >= 1) {
+      setCurrentStepIndex(currentStepIndex - 1);
     }
-  };
+  }
+
+  function handleNextClick() {
+    setCurrentStepIndex(currentStepIndex + 1);
+  }
+
+  function handleSubmitClick() {
+    console.log("Send");
+  }
 
   return (
     <Assisted
-      {...props}
-      steps={steps}
-      currentStepId={currentStep}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
+      size={size}
+      controls={controls}
+      step={steps[currentStepIndex]}
+      totalSteps={steps.length}
+      onBackClick={handleBackClick}
+      onNextClick={handleNextClick}
+      onSubmitClick={handleSubmitClick}
     />
   );
 };
 
 export { AssistedController };
+export type { IAssistedController };

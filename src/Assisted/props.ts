@@ -1,18 +1,13 @@
 interface IAssistedStep {
-  id: number;
+  number: number;
   label: string;
   description?: string;
 }
 
-interface IAssistedProgressBarProps {
-  currentStep: IAssistedStep["id"];
-  arrayLength: number;
-}
-
-interface IAssistedTitleButton {
-  before?: string;
-  after?: string;
-  finish?: string;
+interface IAssistedControls {
+  goBackText?: string;
+  goNextText?: string;
+  submitText?: string;
 }
 
 const sizes = ["small", "large"] as const;
@@ -65,9 +60,4 @@ const props = {
 };
 
 export { parameters, props };
-export type {
-  IAssistedStep,
-  IAssistedProgressBarProps,
-  IAssistedTitleButton,
-  IAssistedSize,
-};
+export type { IAssistedStep, IAssistedControls, IAssistedSize };

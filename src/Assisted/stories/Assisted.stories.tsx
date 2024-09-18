@@ -1,6 +1,6 @@
 import { parameters, props } from "../props";
-import { AssistedController } from "./Assisted.Controller";
-import { Assisted, IAssisted } from "..";
+import { AssistedController, IAssistedController } from "./Assisted.Controller";
+import { Assisted } from "..";
 
 const story = {
   title: "Feedback/Assisted",
@@ -11,52 +11,51 @@ const story = {
 
 const stepsMock = [
   {
-    id: 1,
+    number: 1,
     label: "Información general",
     description: "Información general",
   },
 
   {
-    id: 2,
+    number: 2,
     label: "Ramas",
     description: "Ramas",
   },
 
   {
-    id: 3,
+    number: 3,
     label: "Proyectos",
     description: "Proyectos",
   },
 
   {
-    id: 4,
+    number: 4,
     label: "Unidades de ayuda",
     description: "Unidades de ayuda",
   },
 
   {
-    id: 5,
+    number: 5,
     label: "Nómina",
     description: "Nómina",
   },
 
   {
-    id: 6,
+    number: 6,
     label: "Verificación",
     description: "Verificación",
   },
 ];
 
-const Default = (args: IAssisted) => <AssistedController {...args} />;
+const Default = (args: IAssistedController) => <AssistedController {...args} />;
 
 Default.args = {
   steps: stepsMock,
   size: "large",
-  currentStepId: 3,
-  titleButtonText: {
-    before: "Anterior",
-    after: "Siguiente",
-    finish: "Enviar",
+  controls: {
+    goBackText: "Anterior",
+    goNextText: "Siguiente",
+    submitText: "Enviar",
   },
 };
 
