@@ -1,3 +1,15 @@
+# v5.0.0 (Wed Sep 18 2024)
+
+#### 💥 Breaking Change
+
+- Fcanas/adjust assisted responsive [#50](https://github.com/selsa-inube/inubekit-assisted/pull/50) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v4.33.0 (Wed Sep 04 2024)
 
 #### 🚀 Enhancement
