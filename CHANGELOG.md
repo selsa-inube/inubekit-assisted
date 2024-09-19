@@ -1,3 +1,15 @@
+# v7.0.0 (Thu Sep 19 2024)
+
+#### 💥 Breaking Change
+
+- feat: extend interface to get step id [#53](https://github.com/selsa-inube/inubekit-assisted/pull/53) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v6.0.1 (Thu Sep 19 2024)
 
 #### 🐛 Bug Fix
