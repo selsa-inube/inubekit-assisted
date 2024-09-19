@@ -1,3 +1,15 @@
+# v6.0.1 (Thu Sep 19 2024)
+
+#### 🐛 Bug Fix
+
+- chore: update button dependency to 4.39.1 [#52](https://github.com/selsa-inube/inubekit-assisted/pull/52) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v6.0.0 (Wed Sep 18 2024)
 
 #### 💥 Breaking Change
