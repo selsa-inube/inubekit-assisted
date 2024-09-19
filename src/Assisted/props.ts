@@ -1,6 +1,7 @@
 interface IAssistedStep {
+  id: string | number;
   number: number;
-  label: string;
+  name: string;
   description?: string;
 }
 

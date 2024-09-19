@@ -9,43 +9,44 @@ const story = {
   argTypes: props,
 };
 
-const stepsMock = [
-  {
+const stepsMock = {
+  general: {
+    id: "general",
     number: 1,
-    label: "Información general",
+    name: "Información general",
     description: "Información general",
   },
-
-  {
+  branches: {
+    id: "branches",
     number: 2,
-    label: "Ramas",
+    name: "Ramas",
     description: "Ramas",
   },
-
-  {
+  projects: {
+    id: "projects",
     number: 3,
-    label: "Proyectos",
+    name: "Proyectos",
     description: "Proyectos",
   },
-
-  {
+  help: {
+    id: "help",
     number: 4,
-    label: "Unidades de ayuda",
+    name: "Unidades de ayuda",
     description: "Unidades de ayuda",
   },
-
-  {
+  payroll: {
+    id: "payroll",
     number: 5,
-    label: "Nómina",
+    name: "Nómina",
     description: "Nómina",
   },
-
-  {
+  verification: {
+    id: "verification",
     number: 6,
-    label: "Verificación",
+    name: "Verificación",
     description: "Verificación",
   },
-];
+};
 
 const Default = (args: IAssistedController) => <AssistedController {...args} />;
 
