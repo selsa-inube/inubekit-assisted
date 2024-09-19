@@ -85,12 +85,12 @@ function AssistedUI(props: IAssistedUI) {
                     : (inube.assisted.title.appearance as IText["appearance"])
                 }
               >
-                {step.label}
+                {step.name}
               </Text>
             </Stack>
             <Stack alignItems="center" gap="8px">
               <ProgressBar currentStep={step.number} totalSteps={totalSteps} />
-              <Text type="label" weight="bold">
+              <Text type="label" size="small" weight="bold">
                 {step.number}/{totalSteps}
               </Text>
             </Stack>
@@ -159,7 +159,7 @@ function AssistedUI(props: IAssistedUI) {
                   : (inube.assisted.title.appearance as IText["appearance"])
               }
             >
-              {step.label}
+              {step.name}
             </Text>
           </Stack>
           <Icon
