@@ -3,9 +3,9 @@ import { Icon, IIcon } from "@inubekit/icon";
 import { MdCheckCircle } from "react-icons/md";
 
 import { StyledStepIndicator } from "./styles";
-import { inube } from "@inubekit/foundations";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
+import { tokens } from "../Tokens/tokens";
 
 interface IStepIndicator {
   stepNumber: number;
@@ -14,7 +14,7 @@ interface IStepIndicator {
 
 function StepIndicator(props: IStepIndicator) {
   const { stepNumber, isLastStep } = props;
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { assisted: typeof tokens };
 
   return (
     <StyledStepIndicator>
@@ -23,7 +23,7 @@ function StepIndicator(props: IStepIndicator) {
           appearance={
             theme
               ? (theme.assisted.button.appearance as IIcon["appearance"])
-              : (inube.assisted.button.appearance as IIcon["appearance"])
+              : (tokens.button.appearance as IIcon["appearance"])
           }
           icon={<MdCheckCircle />}
           size="20px"

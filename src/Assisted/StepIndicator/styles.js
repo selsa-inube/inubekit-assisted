@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import { inube } from "@inubekit/foundations";
+import { tokens } from "../Tokens/tokens";
 
 const StyledStepIndicator = styled.div`
   display: flex;
@@ -12,7 +11,7 @@ const StyledStepIndicator = styled.div`
   border-width: 2px;
   border-style: solid;
   border-color: ${({ theme }) =>
-    theme?.assisted?.step?.color || inube.assisted.step.color};
+    theme?.assisted?.step?.color || tokens.step.color};
 `;
 
 export { StyledStepIndicator };
