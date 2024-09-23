@@ -1,5 +1,4 @@
 import { AssistedUI } from "./interface";
-
 import { IAssistedStep, IAssistedSize, IAssistedControls } from "./props";
 
 interface IAssisted {

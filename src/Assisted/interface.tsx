@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
-
-import { inube } from "@inubekit/foundations";
 import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 import { IText, Text } from "@inubekit/text";
@@ -17,6 +15,7 @@ import { StepIndicator } from "./StepIndicator";
 
 import { StyledAssisted } from "./styles";
 import { IIcon } from "@inubekit/icon";
+import { tokens } from "./Tokens/tokens";
 
 interface IAssistedUI {
   size: IAssisted["size"];
@@ -44,7 +43,7 @@ function AssistedUI(props: IAssistedUI) {
     onSubmitClick,
     controls,
   } = props;
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { assisted: typeof tokens };
 
   function isLastStep() {
     return step.number === totalSteps;
@@ -63,7 +62,7 @@ function AssistedUI(props: IAssistedUI) {
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IButton["appearance"])
-                : (inube.assisted.button.appearance as IButton["appearance"])
+                : (tokens.button.appearance as IButton["appearance"])
             }
           >
             {controls!.goBackText}
@@ -82,7 +81,7 @@ function AssistedUI(props: IAssistedUI) {
                 appearance={
                   theme
                     ? (theme.assisted.title.appearance as IText["appearance"])
-                    : (inube.assisted.title.appearance as IText["appearance"])
+                    : (tokens.title.appearance as IText["appearance"])
                 }
               >
                 {step.name}
@@ -100,8 +99,7 @@ function AssistedUI(props: IAssistedUI) {
                 theme
                   ? (theme.assisted.description
                       .appearance as IText["appearance"])
-                  : (inube.assisted.description
-                      .appearance as IText["appearance"])
+                  : (tokens.description.appearance as IText["appearance"])
               }
               size="medium"
               weight="bold"
@@ -117,7 +115,7 @@ function AssistedUI(props: IAssistedUI) {
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IButton["appearance"])
-                : (inube.assisted.button.appearance as IButton["appearance"])
+                : (tokens.button.appearance as IButton["appearance"])
             }
             onClick={() => {
               isLastStep() ? onSubmitClick(step) : onNextClick(step);
@@ -143,7 +141,7 @@ function AssistedUI(props: IAssistedUI) {
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IIcon["appearance"])
-                : (inube.assisted.button.appearance as IIcon["appearance"])
+                : (tokens.button.appearance as IIcon["appearance"])
             }
           />
           <Stack alignItems="center" gap="8px">
@@ -156,7 +154,7 @@ function AssistedUI(props: IAssistedUI) {
               appearance={
                 theme
                   ? (theme.assisted.title.appearance as IText["appearance"])
-                  : (inube.assisted.title.appearance as IText["appearance"])
+                  : (tokens.title.appearance as IText["appearance"])
               }
             >
               {step.name}
@@ -173,7 +171,7 @@ function AssistedUI(props: IAssistedUI) {
             appearance={
               theme
                 ? (theme.assisted.button.appearance as IIcon["appearance"])
-                : (inube.assisted.button.appearance as IIcon["appearance"])
+                : (tokens.button.appearance as IIcon["appearance"])
             }
           />
         </Grid>
@@ -183,7 +181,7 @@ function AssistedUI(props: IAssistedUI) {
           appearance={
             theme
               ? (theme.assisted.description.appearance as IText["appearance"])
-              : (inube.assisted.description.appearance as IText["appearance"])
+              : (tokens.description.appearance as IText["appearance"])
           }
           size="medium"
           weight="bold"

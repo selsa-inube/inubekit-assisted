@@ -1,10 +1,9 @@
 import { parameters, props } from "../props";
 import { AssistedController, IAssistedController } from "./Assisted.Controller";
-import { Assisted } from "..";
 
 const story = {
   title: "Feedback/Assisted",
-  component: Assisted,
+  component: AssistedController,
   parameters,
   argTypes: props,
 };

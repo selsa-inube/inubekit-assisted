@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { inube } from "@inubekit/foundations";
+import { tokens } from "../Tokens/tokens";
 
 const StyledProgressBar = styled.div`
   border-radius: 10px;
@@ -7,7 +7,7 @@ const StyledProgressBar = styled.div`
   height: 16px;
   width: 100%;
   background-color: ${({ theme }) =>
-    theme?.assisted?.track?.color || inube.assisted.track.color};
+    theme?.assisted?.track?.color || tokens.track.color};
 
   &::before {
     content: "";
@@ -18,7 +18,7 @@ const StyledProgressBar = styled.div`
     width: ${({ $currentStep, $totalSteps }) =>
       `${($currentStep / $totalSteps) * 100}%`};
     background: ${({ theme }) =>
-      theme?.assisted?.bar?.color || inube.assisted.bar.color};
+      theme?.assisted?.bar?.color || tokens.bar.color};
   }
 `;
 
