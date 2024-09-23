@@ -1,3 +1,15 @@
+# v7.1.0 (Mon Sep 23 2024)
+
+#### 🚀 Enhancement
+
+- Move assisted tokens from foundations to component [#54](https://github.com/selsa-inube/inubekit-assisted/pull/54) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v7.0.0 (Thu Sep 19 2024)
 
 #### 💥 Breaking Change
