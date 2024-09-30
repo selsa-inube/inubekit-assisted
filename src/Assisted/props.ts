@@ -24,38 +24,47 @@ const parameters = {
 };
 
 const props = {
-  steps: {
+  step: {
     description:
-      "(Array of objects): An array to represent each step of the journey. Each object in the array represents one step and must have the following structure: id, label, description (Optional). The order of the steps depends on the order in the array,",
+      "(Object): The current step being displayed. The object should match one of the steps in the array passed to `steps`.",
   },
-  currentStepId: {
+  totalSteps: {
+    description: "(number): The total number of steps in the journey.",
+  },
+  onBackClick: {
     description:
-      "(string | number): An identifier that matches one of the id values within the steps array to indicate the current step.",
+      "(Function): A function that will be called when the user clicks the previous button.",
   },
-
-  handlePrev: {
+  onNextClick: {
     description:
-      "(Function): (Optional) A function that will be called when the user clicks on the previous button. If not provided, the button will not be rendered.",
+      "(Function): A function that will be called when the user clicks the next button.",
   },
-
-  handleNex: {
-    descriptions:
-      "(Function): (Optional) A function that will be called when the user clicks on the next button.",
-  },
-  titleButtonBefore: {
+  onSubmitClick: {
     description:
-      "(string): (Optional) A string to be displayed in the button before the label of the current step.",
+      "(Function): A function that will be called when the user clicks the submit button (on the last step).",
   },
-  titleButtonAfter: {
+  disableBack: {
     description:
-      "(string): (Optional) A string to be displayed in the button after the label of the current step.",
+      "(boolean): If `true`, the back button will be disabled. Default is `false`.",
+  },
+  disableNext: {
+    description:
+      "(boolean): If `true`, the next button will be disabled. Default is `false`.",
+  },
+  disableSubmit: {
+    description:
+      "(boolean): If `true`, the submit button will be disabled. Default is `false`.",
+  },
+  controls: {
+    description:
+      "(Object): An object to customize the button text. It may include `goBackText`, `goNextText`, and `submitText` to change the default button labels.",
   },
   size: {
     options: sizes,
     control: { type: "select" },
-    description: "assited's size",
+    description: "The size of the Assisted component.",
     table: {
-      defaultValue: { summary: "wide" },
+      defaultValue: { summary: "large" },
     },
   },
 };
