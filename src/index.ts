@@ -5,3 +5,4 @@ export type {
   IAssistedSize,
   IAssistedControls,
 } from "./Assisted/props";
+export { tokens as AssistedTokens } from "./Assisted/Tokens/tokens";
